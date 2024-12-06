@@ -11,7 +11,7 @@ let pokemonList = [
 
 for (let i = 0; i < pokemonList.length; i++) {
     let name = pokemonList[i].name;
-    let height = pokemonList[i].height
+    let height = pokemonList[i].height;
 
     let textInside = height > 1.5 ?
         `<p>Name <span class="card-name ">: ${name}</span> (Height: ${height}) - Wow, that's big! </p>` :
