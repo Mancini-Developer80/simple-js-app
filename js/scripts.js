@@ -1,22 +1,55 @@
-// I created the array of Pokemon objects | name - height - types
+// Creating an IIFE to preserve global state
+const pokemonRepository = function () {
+    // array of Pokemon objects | name - height - types
 
-let pokemonList = [
-    { name: 'Arbok', height: 1.4, types: ['fairy', 'grass'] },
-    { name: 'Kadabra', height: 1.5, types: ['fighting', 'psychic'] },
-    { name: 'Charizard', height: 1.6, types: ['steel', 'bug'] }
-];
+    let pokemonList = [
+        { name: 'Arbok', height: 1.4, types: ['fairy', 'grass'] },
+        { name: 'Kadabra', height: 1.5, types: ['fighting', 'psychic'] },
+        { name: 'Charizard', height: 1.6, types: ['steel', 'bug'] }
+    ];
+    // to run for adding new pokemon object in the list
+    function add(pokemon) {
+        if (typeof pokemon === Object &&
+            pokemon.hasOwnProperty('name') &&
+            pokemon.hasOwnProperty('height') &&
+            pokemon.hasOwnProperty('types')) {
+            
+            pokemonList.push(pokemon)
+        } else {
+            console.log("not allowed");
+        }
+    };
+    // to run to gett all the pokemon in th List
+    function getAll() {
+        return pokemonList;
+    };
 
-// Iterating over each object of pokemonList array
-// If height > 1.5 outputing alternative text
+    function filter(property, value) {
+        return pokemonList.filter(pokemon => {
+            if (property === 'types') {
+                return pokemon[property].includes(value);
+            } else {
+                return pokemon[property] === value;
+            }
+        });
+    };
 
-for (let i = 0; i < pokemonList.length; i++) {
-    let name = pokemonList[i].name;
-    let height = pokemonList[i].height;
+    return {
+        add,
+        getAll,
+        filter
+    };
+}();
 
-    let textInside = height > 1.5 ?
-        `<p>Name <span class="card-name ">: ${name}</span> (Height: ${height}) - Wow, that's big! </p>` :
-        `<p>Name <span class="card-name ">: ${name}</span> (Height: ${height})</p>`;
-    
-    document.write(`<div class="card">${textInside}</div>`);
-        
-}
+// creating a variable containing all the pokemon object in a list
+let pokemons = pokemonRepository.getAll()
+
+// looping in the pokemons variable to extract values
+pokemons.forEach(pokemon => {
+    let textInside = pokemon.height > 1.5 ?
+        `<p>Name <span class="card-name ">: ${pokemon.name}</span> (Height: ${pokemon.height}) - Wow, that's big! </p>` :
+        `<p>Name <span class="card-name ">: ${pokemon.name}</span> (Height: ${pokemon.height})</p>`;
+
+    document.write(`<div class="card">${textInside}</div>`)
+
+});
