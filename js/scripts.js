@@ -9,14 +9,14 @@ const pokemonRepository = function () {
     ];
     // to run for adding new pokemon object in the list
     function add(pokemon) {
-        if (typeof pokemon === Object &&
+        if (typeof pokemon === 'object' &&
             pokemon.hasOwnProperty('name') &&
             pokemon.hasOwnProperty('height') &&
             pokemon.hasOwnProperty('types')) {
             
             pokemonList.push(pokemon)
         } else {
-            console.log("not allowed");
+            alert('this is not an pokemon object!!')
         }
     };
     // to run to gett all the pokemon in th List
