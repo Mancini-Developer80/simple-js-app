@@ -15,12 +15,57 @@
 }
 
 body {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background-color: var(--bg-color);
     color: var(--text-color-w);
     font-family: 'Poppins', sans-serif;
     font-size:  16px;
     
+}
+
+h2, h3 {
+    margin-bottom: 1.4rem;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+li {
+    background-color: #1c5b53;
+    border-radius: 4px;
+    padding: 2rem 1rem;
+    box-shadow: 4px 4px 10px 5px rgba(255, 255, 255, 0.6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.pokemon-app {
+    max-width: 600px;
+    margin: 300px auto;
+}
+
+
+.btn {
+    font-size: inherit;
+    font-family: inherit;
+    padding: .8rem 1.5rem;
+    text-transform: uppercase;
+    background-color: #444444;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    transition: all .2s ease-in;
+}
+
+.btn:hover {
+    transform: scale(.8);
+    background-color: #7a7a7a;
 }
 
 .navbar {
@@ -30,24 +75,24 @@ body {
     font-size:  40px;
     border-bottom: 1px solid #fff;
     box-shadow: 0 4px 20px 5px rgba(0, 0, 0, .4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
 }
-
-.card {
-    border-bottom: .3px solid #fff;;
-}
-
-p {
-    margin: 3rem;
-}
-
-span {
-    font-weight: bold;
-}
-
 
 @media screen and (max-width: 658px) {
     .navbar {
         font-size: 20px;
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    .pokemon-app {
+        max-width: 60%;
     }
 }
 
@@ -56,7 +101,22 @@ span {
         font-size: 12px;
     }
 
-    p {
-        margin: 1rem;
+    body {
+        font-size: 10px;
+    }
+
+    .pokemon-app {
+        max-width: 45%;
+        margin: 100px auto;
+    }
+
+    h2, h3 {
+        margin-bottom: .9rem;
+    }
+
+    li {
+        padding: 1rem 0;
+        margin: 4rem 0;
+
     }
 }

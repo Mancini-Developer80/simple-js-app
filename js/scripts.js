@@ -19,7 +19,7 @@ const pokemonRepository = function () {
             alert('this is not an pokemon object!!')
         }
     };
-    // to run to gett all the pokemon in th List
+    // to run to get all the pokemon in the List
     function getAll() {
         return pokemonList;
     };
@@ -34,22 +34,45 @@ const pokemonRepository = function () {
         });
     };
 
+    function addListItem(pokemon) {
+        const pokemonContainer = document.querySelector('.pokemon-app');
+        const pokemonList = document.createElement('ul');
+        const pokemonItem = document.createElement('li');
+        const pokemonName = document.createElement('h2');
+        const pokemonHeight = document.createElement('h3');
+        const button = document.createElement('button');
+
+        button.addEventListener('click', function () {
+			showDetails(pokemon);
+		})
+
+        button.innerText = "Click Here";
+        pokemonName.innerText = pokemon.name;
+        pokemonHeight.innerText = pokemon.height;
+        button.classList.add('btn');
+
+        pokemonItem.appendChild(pokemonName).appendChild(pokemonHeight);
+        pokemonList.appendChild(pokemonItem)
+        pokemonContainer.appendChild(pokemonItem).appendChild(button);
+
+    };
+
+    function showDetails(pokemon) {
+        console.log(`Name: ${pokemon.name}`);
+        console.log(`Height: ${pokemon.height}`);
+        console.log(`Types: ${pokemon.types.join(', ') }`);
+        
+    }
+
     return {
         add,
         getAll,
-        filter
+        filter,
+        addListItem
     };
 }();
 
 // creating a variable containing all the pokemon object in a list
-let pokemons = pokemonRepository.getAll()
+// outputing the Pokemon list running addLIstItem in forEach 
+let pokemons = pokemonRepository.getAll().forEach(pokemonRepository.addListItem);
 
-// looping in the pokemons variable to extract values
-pokemons.forEach(pokemon => {
-    let textInside = pokemon.height > 1.5 ?
-        `<p>Name <span class="card-name ">: ${pokemon.name}</span> (Height: ${pokemon.height}) - Wow, that's big! </p>` :
-        `<p>Name <span class="card-name ">: ${pokemon.name}</span> (Height: ${pokemon.height})</p>`;
-
-    document.write(`<div class="card">${textInside}</div>`)
-
-});
