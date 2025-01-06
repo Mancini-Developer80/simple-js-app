@@ -82,6 +82,11 @@ li {
     width: 100%;
 }
 
+#loadingMessage {
+    font-size: 3rem;
+    text-align: center;
+}
+
 @media screen and (max-width: 658px) {
     .navbar {
         font-size: 20px;
