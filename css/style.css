@@ -20,6 +20,7 @@ body {
     color: var(--text-color-w);
     font-family: 'Poppins', sans-serif;
     font-size:  16px;
+    /* position: relative; */
     
 }
 
@@ -87,6 +88,51 @@ li {
     text-align: center;
 }
 
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0, .8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.wrapper .pokemon-object {
+    padding: 20px 40px;
+    color:#444444;
+    background-color: #f6f6f6;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 4px 5px 10px rgba(35, 35, 35, 0.4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.pokemon-object h1, .pokemon-object h2 {
+    margin: 15px 0;
+    font-size: 50px;
+}
+
+.pokemon-object .pokemon-img {
+    width: 300px;
+}
+.close {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    font-size: 40px;
+}
+
 @media screen and (max-width: 658px) {
     .navbar {
         font-size: 20px;
@@ -98,6 +144,21 @@ li {
 
     .pokemon-app {
         max-width: 60%;
+    }
+
+    .wrapper .pokemon-object {
+        padding: 0;
+        width: 50%;
+    }
+
+    .wrapper .pokemon-object h1,
+    .wrapper .pokemon-object h2
+     {
+        font-size: 20px;
+    }
+
+    .pokemon-object .pokemon-img {
+        width: 150px;
     }
 }
 
@@ -124,4 +185,5 @@ li {
         margin: 4rem 0;
 
     }
+
 }

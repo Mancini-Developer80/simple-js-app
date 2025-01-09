@@ -24,9 +24,7 @@ const pokemonRepository = function () {
     function add(pokemon) {
         if (typeof pokemon === 'object' &&
             pokemon.hasOwnProperty('name') &&
-            pokemon.hasOwnProperty('url')) // &&
-            // pokemon.hasOwnProperty('types')) { 
-            {
+            pokemon.hasOwnProperty('url')) {
             pokemonList.push(pokemon)
         } else {
             alert('this is not an pokemon object!!')
@@ -43,7 +41,7 @@ const pokemonRepository = function () {
                     name : item.name,
                     url: item.url,
                 };
-                console.log(pokemon);
+                // console.log(pokemon);
                 add(pokemon);
             });
             hideLoadingMessage()
@@ -109,8 +107,56 @@ const pokemonRepository = function () {
     };
 
     function showDetails(item) {
+        const body = document.querySelector('body');
         pokemonRepository.loadDetails(item).then(function () {
-            console.log(item)
+            
+            const wrapper = document.createElement('div');
+            const pokemonObject = document.createElement('div');
+            const closeButton = document.createElement('div');
+            const title = document.createElement('h1');
+            const height = document.createElement('h2');
+            const img = document.createElement('img');
+
+            
+            wrapper.classList.add('wrapper');
+            pokemonObject.classList.add('pokemon-object');
+            closeButton.classList.add('close');
+            img.classList.add('pokemon-img');
+
+            title.innerText = item.name[0].toUpperCase() + item.name.slice(1);
+            height.innerText = item.height;
+            closeButton.innerText = 'X';
+            img.setAttribute('src', item.imageUrl);
+
+            wrapper.appendChild(pokemonObject);
+            pokemonObject.appendChild(closeButton);
+            pokemonObject.appendChild(title);
+            pokemonObject.appendChild(height);
+            pokemonObject.appendChild(img);
+            body.appendChild(wrapper);
+
+            closeButton.addEventListener('click', () => {
+                wrapper.style.display = 'none';
+            })
+
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('wrapper')) {
+                    wrapper.style.display = 'none';
+                }
+                
+            })
+
+            window.addEventListener('keyup', (e) => {
+                if (e.key === 'Escape') {
+                    wrapper.style.display = 'none';
+                };
+            })
+
+
+            // console.log(item);
+            // console.log(item.name)
+            // console.log(item.height)
+            // console.log(item.url)
         });
         
     }
